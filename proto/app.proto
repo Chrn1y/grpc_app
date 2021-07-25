@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package="proto";
+
+package app;
+
+service App{
+    rpc Add(AddValues) returns (Value) {}
+    rpc Sum(stream Value) returns (Value) {}
+    rpc Ones(Value) returns (stream Value) {}
+    rpc Repeat(stream Value) returns (stream Value) {}
+}
+
+message Value {
+    int64 x = 1;
+}
+
+message AddValues {
+    int64 x = 1;
+    int64 y = 2;
+}
