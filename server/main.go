@@ -37,7 +37,7 @@ func (s *GRPCServer) Sum(stream proto.App_SumServer) error {
 }
 
 func (s *GRPCServer) Ones(x *proto.Value, stream proto.App_OnesServer) error {
-	for it := x.GetX(); it >= 0; it -= 1 {
+	for it := x.GetX(); it > 0; it -= 1 {
 		if err := stream.Send(&proto.Value{
 			X: 1}); err != nil {
 			return err
